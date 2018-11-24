@@ -2,9 +2,9 @@
 "use strict";
 
 
-var soap = require('soap');
-var express = require('express');
-var fs = require('fs');
+const soap = require('soap');
+const express = require('express');
+const fs = require('fs');
 
 // the splitter function, used by the service
 function verifyArrgs(args) {
@@ -31,7 +31,7 @@ function verifyArrgs(args) {
 }
 
 // the service
-var serviceObject = {
+const serviceObject = {
   AdaptPriceService: {
         AdaptPriceServiceSoapPort: {
             AdaptPrice: verifyArrgs
@@ -40,14 +40,11 @@ var serviceObject = {
 };
 
 // load the WSDL file
-var xml = fs.readFileSync('service.wsdl', 'utf8');
+const xml = fs.readFileSync('service.wsdl', 'utf8');
 // create express app
-var app = express();
+const app = express();
 
-// root handler
-app.get('/', function (req, res) {
-  res.send('Node Soap Example!<br /><a href="https://github.com/macogala/node-soap-example#readme">Git README</a>');
-})
+
 
 // Launch the server and listen
 var port = 8000;
